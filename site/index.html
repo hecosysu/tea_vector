@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tea Knowledge Topology</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #18211b;
+      --muted: #5d6a61;
+      --line: #d7ddd2;
+      --paper: #f8faf6;
+      --leaf: #2f6b3f;
+      --amber: #b7791f;
+      --clay: #8f4d2f;
+      --mist: #e8f0e4;
+      --blue: #356b87;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.55;
+    }
+    header {
+      min-height: 92vh;
+      display: grid;
+      align-items: end;
+      background:
+        linear-gradient(180deg, rgba(15, 27, 17, .18), rgba(15, 27, 17, .72)),
+        url("https://upload.wikimedia.org/wikipedia/commons/4/45/Tea_plantation_in_Munnar%2C_Kerala.jpg") center/cover;
+      color: white;
+      padding: 32px;
+    }
+    .hero {
+      width: min(980px, 100%);
+      padding-bottom: 24px;
+    }
+    h1 {
+      font-size: clamp(42px, 9vw, 98px);
+      line-height: .95;
+      margin: 0 0 18px;
+      letter-spacing: 0;
+    }
+    .subtitle {
+      max-width: 760px;
+      font-size: clamp(18px, 2.2vw, 25px);
+      color: #f3f7ef;
+      margin: 0 0 28px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .actions a {
+      color: white;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, .72);
+      padding: 10px 14px;
+      background: rgba(0, 0, 0, .18);
+    }
+    main { padding: 34px 22px 80px; }
+    section {
+      width: min(1120px, 100%);
+      margin: 0 auto 48px;
+    }
+    h2 {
+      font-size: clamp(26px, 4vw, 44px);
+      margin: 0 0 14px;
+      letter-spacing: 0;
+    }
+    .lead {
+      max-width: 860px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 8px;
+      padding: 16px;
+      min-height: 150px;
+    }
+    .card h3 { margin: 0 0 8px; font-size: 20px; }
+    .card p { margin: 0; color: var(--muted); }
+    .topology {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      align-items: stretch;
+    }
+    .node {
+      border: 1px solid var(--line);
+      border-left: 7px solid var(--leaf);
+      background: white;
+      padding: 14px;
+      border-radius: 8px;
+    }
+    .node:nth-child(2n) { border-left-color: var(--amber); }
+    .node:nth-child(3n) { border-left-color: var(--blue); }
+    .node strong { display: block; margin-bottom: 4px; }
+    .node span { color: var(--muted); font-size: 14px; }
+    .vector {
+      display: grid;
+      grid-template-columns: minmax(260px, 430px) 1fr;
+      gap: 24px;
+      align-items: center;
+      background: var(--mist);
+      border: 1px solid var(--line);
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .bars { display: grid; gap: 9px; }
+    .bar {
+      display: grid;
+      grid-template-columns: 90px 1fr 32px;
+      gap: 10px;
+      align-items: center;
+      font-size: 14px;
+    }
+    .track {
+      height: 10px;
+      background: white;
+      border: 1px solid var(--line);
+    }
+    .fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--leaf), var(--amber));
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border: 1px solid var(--line);
+      font-size: 14px;
+    }
+    th, td {
+      text-align: left;
+      padding: 10px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    th { background: #eef3ea; }
+    footer {
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      padding: 24px;
+      text-align: center;
+    }
+    @media (max-width: 760px) {
+      header { min-height: 88vh; padding: 20px; }
+      .topology { grid-template-columns: 1fr; }
+      .vector { grid-template-columns: 1fr; }
+      th, td { padding: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="hero">
+      <h1>Tea Knowledge Topology</h1>
+      <p class="subtitle">一个持续生长的茶知识网络：从茶树、工艺和理化指标，到茶艺、茶道、茶疗、历史、产业与前沿科学。</p>
+      <div class="actions">
+        <a href="../docs/topology.md">知识拓扑</a>
+        <a href="../docs/tea-system.md">TEA-CODE</a>
+        <a href="../docs/workbench.md">研发看板</a>
+        <a href="../data/example-teas.csv">样例数据</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>不是茶条目，是茶的解释网络</h2>
+      <p class="lead">茶的知识不应被切碎在百科、工艺、审评、养生和文化里。这个项目把它们连接起来：茶树提供原料潜能，生态改变代谢，工艺改变理化状态，理化状态解释香气滋味，也约束冲泡、健康证据与文化表达。</p>
+      <div class="topology">
+        <div class="node"><strong>茶树百科</strong><span>分类、种质、生态适应性、栽培、育种。</span></div>
+        <div class="node"><strong>茶叶百科</strong><span>六大茶类、名茶、再加工茶、仓储陈化。</span></div>
+        <div class="node"><strong>制茶科学</strong><span>萎凋、杀青、揉捻、氧化、渥堆、焙火。</span></div>
+        <div class="node"><strong>理化指标</strong><span>多酚、儿茶素、茶氨酸、咖啡碱、香气。</span></div>
+        <div class="node"><strong>茶艺茶道</strong><span>器具、水温、礼法、审美与浸出动力学。</span></div>
+        <div class="node"><strong>茶疗健康</strong><span>证据等级、适用边界、风险与药物相互作用。</span></div>
+        <div class="node"><strong>历史文化</strong><span>中国茶史、亚洲传播、全球贸易与日常生活。</span></div>
+        <div class="node"><strong>前沿科学</strong><span>组学、微生物组、AI 分级、气候变化。</span></div>
+        <div class="node"><strong>产业价值</strong><span>教育、消费沟通、产区表达、质量评价。</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>TEA-CODE 茶向量</h2>
+      <div class="vector">
+        <div>
+          <p class="lead">第一版用 16 个 0-10 维度描述茶样，把传统茶类变成可比较、可解释、可迭代的数据对象。右侧是「武夷岩茶肉桂示例」的部分维度演示，非检测结论。</p>
+        </div>
+        <div class="bars" aria-label="TEA-CODE demo bars">
+          <div class="bar"><span>氧化度</span><div class="track"><div class="fill" style="width:50%"></div></div><span>5</span></div>
+          <div class="bar"><span>焙火度</span><div class="track"><div class="fill" style="width:70%"></div></div><span>7</span></div>
+          <div class="bar"><span>香气</span><div class="track"><div class="fill" style="width:80%"></div></div><span>8</span></div>
+          <div class="bar"><span>苦涩</span><div class="track"><div class="fill" style="width:50%"></div></div><span>5</span></div>
+          <div class="bar"><span>甜醇</span><div class="track"><div class="fill" style="width:70%"></div></div><span>7</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>第一批任务</h2>
+      <div class="grid">
+        <article class="card"><h3>信息收集</h3><p>补齐标准、论文、产区、工艺、健康证据和统计数据。</p></article>
+        <article class="card"><h3>信息整理</h3><p>把资料拆成节点、边、争议、引用和待验证问题。</p></article>
+        <article class="card"><h3>图文展现</h3><p>增加工艺流程图、茶树图、茶汤图、雷达图和时间线。</p></article>
+        <article class="card"><h3>体系迭代</h3><p>用样品和文献校准 TEA-CODE 的参考区间与权重。</p></article>
+      </div>
+    </section>
+
+    <section>
+      <h2>证据边界</h2>
+      <table>
+        <thead><tr><th>主题</th><th>当前原则</th><th>来源入口</th></tr></thead>
+        <tbody>
+          <tr><td>健康</td><td>区分日常饮用茶汤和高浓度提取物；不得用茶疗内容替代医疗建议。</td><td>NIH NCCIH</td></tr>
+          <tr><td>感官</td><td>感官比较需要固定水、器具、投茶量、时间等参数。</td><td>ISO 3103</td></tr>
+          <tr><td>分类</td><td>严格茶来自 Camellia sinensis；花草茶另列。</td><td>Kew POWO</td></tr>
+          <tr><td>统计</td><td>全球生产、面积和贸易数据使用可追溯统计库。</td><td>FAOSTAT</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    v0.1.0-alpha · 更新于 2026-06-17 · 图片占位来源：Wikimedia Commons
+  </footer>
+</body>
+</html>
+

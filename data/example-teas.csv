@@ -1,0 +1,10 @@
+id,name,category,origin,T01,T02,P01,P02,P03,P04,C01,C02,C03,C04,C05,C06,C07,C08,S01,S02,confidence,basis,updated_at
+longjing-demo,西湖龙井示例,green,中国浙江杭州,9,8,1,0,1,0,7,8,1,8,5,6,7,4,4,8,0.35,demo_estimate,2026-06-17
+biluochun-demo,洞庭碧螺春示例,green,中国江苏苏州,9,7,1,0,1,0,7,8,1,8,5,7,7,4,4,8,0.35,demo_estimate,2026-06-17
+fuding-white-demo,福鼎白茶白牡丹示例,white,中国福建福鼎,7,8,2,0,0,2,6,6,2,7,4,6,7,4,3,7,0.35,demo_estimate,2026-06-17
+junshan-yinzhen-demo,君山银针示例,yellow,中国湖南岳阳,9,8,2,0,0,0,6,6,2,7,4,5,6,4,3,7,0.30,demo_estimate,2026-06-17
+tieguanyin-demo,清香铁观音示例,oolong,中国福建安溪,5,8,3,0,2,0,6,5,3,5,5,8,7,5,4,7,0.35,demo_estimate,2026-06-17
+yancha-rougui-demo,武夷岩茶肉桂示例,oolong,中国福建武夷山,4,7,5,0,7,2,6,4,5,4,5,8,7,5,5,7,0.35,demo_estimate,2026-06-17
+keemun-demo,祁门红茶示例,black,中国安徽祁门,5,7,9,0,1,0,5,2,8,4,5,8,7,5,4,8,0.35,demo_estimate,2026-06-17
+ripe-puer-demo,熟普洱示例,dark,中国云南勐海,3,6,3,8,2,6,4,2,8,3,4,5,8,6,3,8,0.35,demo_estimate,2026-06-17
+
