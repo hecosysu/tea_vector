@@ -9,12 +9,23 @@
 ## 快速入口
 
 - 可视化首页：[site/index.html](site/index.html)
+- GitHub Pages 工作流：[.github/workflows/pages.yml](.github/workflows/pages.yml)
 - 知识拓扑：[docs/topology.md](docs/topology.md)
 - 新茶体系 TEA-CODE：[docs/tea-system.md](docs/tea-system.md)
 - 研发工作界面：[docs/workbench.md](docs/workbench.md)
 - 资料来源与证据分级：[docs/research-sources.md](docs/research-sources.md)
 - 茶向量 schema：[data/tea-vector-schema.json](data/tea-vector-schema.json)
 - 样例茶向量数据：[data/example-teas.csv](data/example-teas.csv)
+
+## GitHub Pages 发布
+
+项目内置 GitHub Actions 工作流，会在推送到 `main` 或手动触发时：
+
+1. 校验 `data/example-teas.csv` 中的 TEA-CODE 分值。
+2. 将 `site/`、`docs/`、`data/` 和 `README.md` 打包到 `_site/`。
+3. 使用 GitHub Pages artifact 部署网站。
+
+仓库设置中需要将 Pages source 选择为 `GitHub Actions`。发布成功后，网站通常可通过 `https://hecosysu.github.io/tea_vector/` 访问。
 
 ## 项目目标
 
@@ -111,6 +122,8 @@ NCCIH 2025 年资料指出，绿茶作为饮品对成年人通常未报告安全
 - [ ] 为 30 种代表性茶建立样例向量
 - [ ] 建立图片与版权素材清单
 - [ ] 加入自动校验脚本和 GitHub Actions
+- [x] 加入自动校验脚本和 GitHub Actions
+- [ ] 在 GitHub 仓库设置中启用 Pages: GitHub Actions
 - [ ] 发布 GitHub Pages
 
 ## 主要参考入口
@@ -129,4 +142,3 @@ NCCIH 2025 年资料指出，绿茶作为饮品对成年人通常未报告安全
 2. `docs/workbench.md` 的进展与问题。
 3. `data/` 中的结构化记录。
 4. 资料来源、证据等级与更新时间。
-

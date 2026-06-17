@@ -3,21 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tea Knowledge Topology</title>
+  <meta name="description" content="茶知识拓扑与 TEA-CODE 茶向量体系">
+  <title>Tea Vector | 茶知识拓扑</title>
   <style>
     :root {
       color-scheme: light;
-      --ink: #18211b;
-      --muted: #5d6a61;
-      --line: #d7ddd2;
-      --paper: #f8faf6;
-      --leaf: #2f6b3f;
-      --amber: #b7791f;
-      --clay: #8f4d2f;
-      --mist: #e8f0e4;
-      --blue: #356b87;
+      --ink: #172018;
+      --muted: #59685e;
+      --paper: #f7f8f2;
+      --surface: #ffffff;
+      --line: #d9ded2;
+      --leaf: #2f6a43;
+      --moss: #76915a;
+      --amber: #b9822f;
+      --clay: #9b583c;
+      --blue: #376f88;
+      --shadow: 0 16px 45px rgba(31, 42, 29, .13);
     }
+
     * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -25,220 +32,645 @@
       background: var(--paper);
       line-height: 1.55;
     }
-    header {
-      min-height: 92vh;
+
+    a { color: inherit; }
+
+    .hero {
+      min-height: 92svh;
       display: grid;
       align-items: end;
-      background:
-        linear-gradient(180deg, rgba(15, 27, 17, .18), rgba(15, 27, 17, .72)),
-        url("https://upload.wikimedia.org/wikipedia/commons/4/45/Tea_plantation_in_Munnar%2C_Kerala.jpg") center/cover;
       color: white;
-      padding: 32px;
+      background:
+        linear-gradient(180deg, rgba(12, 24, 13, .08) 0%, rgba(12, 24, 13, .72) 72%, rgba(12, 24, 13, .86) 100%),
+        url("https://upload.wikimedia.org/wikipedia/commons/4/45/Tea_plantation_in_Munnar%2C_Kerala.jpg") center/cover;
+      padding: 28px;
     }
-    .hero {
-      width: min(980px, 100%);
-      padding-bottom: 24px;
+
+    .hero-inner {
+      width: min(1160px, 100%);
+      margin: 0 auto;
+      padding: 82px 0 30px;
     }
+
+    .nav {
+      position: fixed;
+      z-index: 20;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1120px, calc(100% - 28px));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      color: white;
+      background: rgba(13, 25, 15, .54);
+      border: 1px solid rgba(255, 255, 255, .22);
+      backdrop-filter: blur(14px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 750;
+      min-width: max-content;
+    }
+
+    .mark {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, .62);
+      background: rgba(255, 255, 255, .12);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    .nav-links a,
+    .button {
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, .5);
+      padding: 8px 10px;
+      background: rgba(255, 255, 255, .1);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #e8f0dd;
+      font-size: 14px;
+      font-weight: 720;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
     h1 {
-      font-size: clamp(42px, 9vw, 98px);
-      line-height: .95;
-      margin: 0 0 18px;
+      max-width: 900px;
+      margin: 0;
+      font-size: clamp(44px, 8vw, 104px);
+      line-height: .94;
       letter-spacing: 0;
     }
+
     .subtitle {
       max-width: 760px;
-      font-size: clamp(18px, 2.2vw, 25px);
-      color: #f3f7ef;
-      margin: 0 0 28px;
+      margin: 22px 0 28px;
+      color: #f4f8ef;
+      font-size: clamp(18px, 2vw, 24px);
     }
-    .actions {
+
+    .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
     }
-    .actions a {
+
+    .hero-actions a {
       color: white;
       text-decoration: none;
-      border: 1px solid rgba(255, 255, 255, .72);
-      padding: 10px 14px;
+      border: 1px solid rgba(255, 255, 255, .68);
+      padding: 10px 13px;
       background: rgba(0, 0, 0, .18);
     }
-    main { padding: 34px 22px 80px; }
+
+    main { padding: 42px 20px 74px; }
+
     section {
       width: min(1120px, 100%);
-      margin: 0 auto 48px;
+      margin: 0 auto 54px;
     }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 18px;
+    }
+
     h2 {
-      font-size: clamp(26px, 4vw, 44px);
-      margin: 0 0 14px;
+      margin: 0;
+      font-size: clamp(27px, 4vw, 46px);
+      line-height: 1.08;
       letter-spacing: 0;
     }
+
     .lead {
-      max-width: 860px;
+      max-width: 780px;
       color: var(--muted);
       font-size: 18px;
+      margin: 10px 0 0;
     }
-    .grid {
+
+    .metrics {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 14px;
-      margin-top: 22px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
     }
-    .card {
+
+    .metric,
+    .card,
+    .panel,
+    .table-wrap {
+      background: var(--surface);
       border: 1px solid var(--line);
-      background: white;
       border-radius: 8px;
-      padding: 16px;
-      min-height: 150px;
+      box-shadow: var(--shadow);
     }
-    .card h3 { margin: 0 0 8px; font-size: 20px; }
-    .card p { margin: 0; color: var(--muted); }
+
+    .metric {
+      padding: 16px;
+      min-height: 112px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: clamp(30px, 5vw, 54px);
+      line-height: 1;
+      color: var(--leaf);
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+    }
+
     .topology {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
+    }
+
+    .card {
+      min-height: 158px;
+      padding: 17px;
+      border-top: 6px solid var(--leaf);
+    }
+
+    .card:nth-child(2n) { border-top-color: var(--amber); }
+    .card:nth-child(3n) { border-top-color: var(--blue); }
+    .card:nth-child(4n) { border-top-color: var(--clay); }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .system-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, .86fr) 1.14fr;
+      gap: 16px;
       align-items: stretch;
     }
-    .node {
-      border: 1px solid var(--line);
-      border-left: 7px solid var(--leaf);
-      background: white;
-      padding: 14px;
-      border-radius: 8px;
+
+    .panel { padding: 18px; }
+
+    .panel h3 {
+      margin: 0 0 10px;
+      font-size: 22px;
     }
-    .node:nth-child(2n) { border-left-color: var(--amber); }
-    .node:nth-child(3n) { border-left-color: var(--blue); }
-    .node strong { display: block; margin-bottom: 4px; }
-    .node span { color: var(--muted); font-size: 14px; }
-    .vector {
+
+    .panel p { color: var(--muted); }
+
+    .bars {
       display: grid;
-      grid-template-columns: minmax(260px, 430px) 1fr;
-      gap: 24px;
-      align-items: center;
-      background: var(--mist);
-      border: 1px solid var(--line);
-      padding: 20px;
-      border-radius: 8px;
+      gap: 10px;
+      margin-top: 18px;
     }
-    .bars { display: grid; gap: 9px; }
+
     .bar {
       display: grid;
-      grid-template-columns: 90px 1fr 32px;
+      grid-template-columns: 106px 1fr 34px;
       gap: 10px;
       align-items: center;
       font-size: 14px;
     }
+
     .track {
       height: 10px;
-      background: white;
+      background: #eef2e9;
       border: 1px solid var(--line);
+      overflow: hidden;
     }
+
     .fill {
       height: 100%;
       background: linear-gradient(90deg, var(--leaf), var(--amber));
     }
+
+    .radar-wrap {
+      min-height: 360px;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 12px;
+    }
+
+    .select-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    select {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: #fbfcf8;
+      color: var(--ink);
+      padding: 9px 34px 9px 11px;
+      font: inherit;
+      min-width: 230px;
+    }
+
+    canvas {
+      width: 100%;
+      height: 300px;
+      display: block;
+    }
+
+    .workflow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .step {
+      position: relative;
+      min-height: 126px;
+      padding: 16px;
+      background: #eef3e8;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .step strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--leaf);
+    }
+
+    .step span { color: var(--muted); }
+
+    .table-wrap {
+      overflow: auto;
+      box-shadow: none;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
-      background: white;
-      border: 1px solid var(--line);
+      min-width: 740px;
       font-size: 14px;
+      background: white;
     }
-    th, td {
+
+    th,
+    td {
       text-align: left;
-      padding: 10px;
+      padding: 11px 12px;
       border-bottom: 1px solid var(--line);
       vertical-align: top;
     }
-    th { background: #eef3ea; }
+
+    th {
+      color: #2f3c31;
+      background: #edf2e8;
+    }
+
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .doc-link {
+      display: block;
+      min-height: 116px;
+      padding: 16px;
+      text-decoration: none;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .doc-link strong { display: block; margin-bottom: 6px; }
+    .doc-link span { color: var(--muted); font-size: 14px; }
+
     footer {
       border-top: 1px solid var(--line);
       color: var(--muted);
       padding: 24px;
       text-align: center;
+      font-size: 14px;
     }
-    @media (max-width: 760px) {
-      header { min-height: 88vh; padding: 20px; }
-      .topology { grid-template-columns: 1fr; }
-      .vector { grid-template-columns: 1fr; }
-      th, td { padding: 8px; }
+
+    @media (max-width: 900px) {
+      .metrics,
+      .workflow,
+      .link-grid { grid-template-columns: repeat(2, 1fr); }
+      .topology,
+      .system-grid { grid-template-columns: 1fr; }
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .nav-links { justify-content: flex-start; }
+      .hero { padding: 18px; }
+      .hero-inner { padding-top: 132px; }
+    }
+
+    @media (max-width: 560px) {
+      main { padding-inline: 14px; }
+      .metrics,
+      .workflow,
+      .link-grid { grid-template-columns: 1fr; }
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .bar { grid-template-columns: 90px 1fr 28px; }
+      canvas { height: 260px; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="hero">
-      <h1>Tea Knowledge Topology</h1>
-      <p class="subtitle">一个持续生长的茶知识网络：从茶树、工艺和理化指标，到茶艺、茶道、茶疗、历史、产业与前沿科学。</p>
-      <div class="actions">
-        <a href="../docs/topology.md">知识拓扑</a>
-        <a href="../docs/tea-system.md">TEA-CODE</a>
-        <a href="../docs/workbench.md">研发看板</a>
-        <a href="../data/example-teas.csv">样例数据</a>
+  <nav class="nav" aria-label="主导航">
+    <div class="brand"><span class="mark">茶</span><span>Tea Vector</span></div>
+    <div class="nav-links">
+      <a href="#topology">拓扑</a>
+      <a href="#system">TEA-CODE</a>
+      <a href="#workflow">研发</a>
+      <a href="#resources">资料</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">Tea Knowledge Topology</p>
+      <h1>把茶做成一张可生长的知识网络</h1>
+      <p class="subtitle">从茶树、工艺和理化指标，到茶艺、茶道、茶疗、历史、产业与前沿科学；再用 TEA-CODE 把具体茶样编码成可比较的向量。</p>
+      <div class="hero-actions">
+        <a href="docs/topology.md">进入知识拓扑</a>
+        <a href="docs/tea-system.md">查看茶体系</a>
+        <a href="data/example-teas.csv">下载样例数据</a>
       </div>
     </div>
   </header>
 
   <main>
-    <section>
-      <h2>不是茶条目，是茶的解释网络</h2>
-      <p class="lead">茶的知识不应被切碎在百科、工艺、审评、养生和文化里。这个项目把它们连接起来：茶树提供原料潜能，生态改变代谢，工艺改变理化状态，理化状态解释香气滋味，也约束冲泡、健康证据与文化表达。</p>
-      <div class="topology">
-        <div class="node"><strong>茶树百科</strong><span>分类、种质、生态适应性、栽培、育种。</span></div>
-        <div class="node"><strong>茶叶百科</strong><span>六大茶类、名茶、再加工茶、仓储陈化。</span></div>
-        <div class="node"><strong>制茶科学</strong><span>萎凋、杀青、揉捻、氧化、渥堆、焙火。</span></div>
-        <div class="node"><strong>理化指标</strong><span>多酚、儿茶素、茶氨酸、咖啡碱、香气。</span></div>
-        <div class="node"><strong>茶艺茶道</strong><span>器具、水温、礼法、审美与浸出动力学。</span></div>
-        <div class="node"><strong>茶疗健康</strong><span>证据等级、适用边界、风险与药物相互作用。</span></div>
-        <div class="node"><strong>历史文化</strong><span>中国茶史、亚洲传播、全球贸易与日常生活。</span></div>
-        <div class="node"><strong>前沿科学</strong><span>组学、微生物组、AI 分级、气候变化。</span></div>
-        <div class="node"><strong>产业价值</strong><span>教育、消费沟通、产区表达、质量评价。</span></div>
+    <section aria-label="项目指标">
+      <div class="metrics">
+        <div class="metric"><strong>9</strong><span>一级知识域</span></div>
+        <div class="metric"><strong>16</strong><span>TEA-CODE 维度</span></div>
+        <div class="metric"><strong>8</strong><span>首批样例茶</span></div>
+        <div class="metric"><strong>4</strong><span>证据来源等级</span></div>
       </div>
     </section>
 
-    <section>
-      <h2>TEA-CODE 茶向量</h2>
-      <div class="vector">
+    <section id="topology">
+      <div class="section-head">
         <div>
-          <p class="lead">第一版用 16 个 0-10 维度描述茶样，把传统茶类变成可比较、可解释、可迭代的数据对象。右侧是「武夷岩茶肉桂示例」的部分维度演示，非检测结论。</p>
+          <h2>茶知识拓扑</h2>
+          <p class="lead">项目把茶理解为一组互相解释的节点：植物潜能、生态适应、加工状态、理化指标、感官结果、冲泡方式、健康证据与文化表达。</p>
         </div>
-        <div class="bars" aria-label="TEA-CODE demo bars">
-          <div class="bar"><span>氧化度</span><div class="track"><div class="fill" style="width:50%"></div></div><span>5</span></div>
-          <div class="bar"><span>焙火度</span><div class="track"><div class="fill" style="width:70%"></div></div><span>7</span></div>
-          <div class="bar"><span>香气</span><div class="track"><div class="fill" style="width:80%"></div></div><span>8</span></div>
-          <div class="bar"><span>苦涩</span><div class="track"><div class="fill" style="width:50%"></div></div><span>5</span></div>
-          <div class="bar"><span>甜醇</span><div class="track"><div class="fill" style="width:70%"></div></div><span>7</span></div>
+        <a class="button" href="docs/topology.md">完整文档</a>
+      </div>
+      <div class="topology">
+        <article class="card"><h3>茶树百科</h3><p>分类、种质、生态适应性、栽培、育种与采摘标准。</p></article>
+        <article class="card"><h3>茶叶百科</h3><p>六大茶类、名茶、再加工茶、仓储陈化和商品等级。</p></article>
+        <article class="card"><h3>制茶科学</h3><p>萎凋、杀青、揉捻、氧化、渥堆、干燥与焙火。</p></article>
+        <article class="card"><h3>理化指标</h3><p>多酚、儿茶素、茶氨酸、咖啡碱、香气和安全指标。</p></article>
+        <article class="card"><h3>茶艺茶道</h3><p>器具、水温、投茶量、礼法审美与浸出动力学。</p></article>
+        <article class="card"><h3>茶疗健康</h3><p>证据等级、适用边界、相互作用与风险提示。</p></article>
+        <article class="card"><h3>历史文化</h3><p>中国茶史、亚洲传播、全球贸易、宗教与日常生活。</p></article>
+        <article class="card"><h3>前沿科学</h3><p>组学、代谢组、微生物组、AI 评价与气候变化。</p></article>
+        <article class="card"><h3>产业价值</h3><p>教育、产区表达、质量沟通、消费解释与研究假设。</p></article>
+      </div>
+    </section>
+
+    <section id="system">
+      <div class="section-head">
+        <div>
+          <h2>TEA-CODE 茶向量</h2>
+          <p class="lead">每个茶样用 16 个 0-10 维度描述。第一版强调可解释性，后续用实测数据、文献和感官审评不断校准。</p>
+        </div>
+        <a class="button" href="docs/tea-system.md">体系说明</a>
+      </div>
+      <div class="system-grid">
+        <div class="panel">
+          <h3 id="selected-name">武夷岩茶肉桂示例</h3>
+          <p id="selected-meta">中国福建武夷山 · oolong · demo_estimate</p>
+          <div class="bars" id="bars"></div>
+        </div>
+        <div class="panel radar-wrap">
+          <div class="select-row">
+            <label for="tea-select">切换茶样</label>
+            <select id="tea-select" aria-label="选择茶样"></select>
+          </div>
+          <canvas id="radar" width="680" height="320" aria-label="TEA-CODE 雷达图"></canvas>
         </div>
       </div>
     </section>
 
-    <section>
-      <h2>第一批任务</h2>
-      <div class="grid">
-        <article class="card"><h3>信息收集</h3><p>补齐标准、论文、产区、工艺、健康证据和统计数据。</p></article>
-        <article class="card"><h3>信息整理</h3><p>把资料拆成节点、边、争议、引用和待验证问题。</p></article>
-        <article class="card"><h3>图文展现</h3><p>增加工艺流程图、茶树图、茶汤图、雷达图和时间线。</p></article>
-        <article class="card"><h3>体系迭代</h3><p>用样品和文献校准 TEA-CODE 的参考区间与权重。</p></article>
+    <section id="workflow">
+      <div class="section-head">
+        <div>
+          <h2>研发工作流</h2>
+          <p class="lead">每次更新都应保持可追踪：资料、结构化数据、解释页面和研发看板同步推进。</p>
+        </div>
+        <a class="button" href="docs/workbench.md">研发看板</a>
+      </div>
+      <div class="workflow">
+        <div class="step"><strong>01 信息收集</strong><span>补充标准、论文、产区、工艺、健康证据和统计数据。</span></div>
+        <div class="step"><strong>02 知识整理</strong><span>拆成节点、边、争议、引用和待验证问题。</span></div>
+        <div class="step"><strong>03 图文展示</strong><span>制作流程图、指标图、茶样对比和面向公众的解释页面。</span></div>
+        <div class="step"><strong>04 体系迭代</strong><span>用样品库校准 TEA-CODE 维度、参考区间和置信度。</span></div>
       </div>
     </section>
 
-    <section>
-      <h2>证据边界</h2>
-      <table>
-        <thead><tr><th>主题</th><th>当前原则</th><th>来源入口</th></tr></thead>
-        <tbody>
-          <tr><td>健康</td><td>区分日常饮用茶汤和高浓度提取物；不得用茶疗内容替代医疗建议。</td><td>NIH NCCIH</td></tr>
-          <tr><td>感官</td><td>感官比较需要固定水、器具、投茶量、时间等参数。</td><td>ISO 3103</td></tr>
-          <tr><td>分类</td><td>严格茶来自 Camellia sinensis；花草茶另列。</td><td>Kew POWO</td></tr>
-          <tr><td>统计</td><td>全球生产、面积和贸易数据使用可追溯统计库。</td><td>FAOSTAT</td></tr>
-        </tbody>
-      </table>
+    <section id="data">
+      <div class="section-head">
+        <div>
+          <h2>样例茶数据</h2>
+          <p class="lead">当前数据为体系演示，不代表具体商品检测结果。后续应逐步补充来源、原始单位、检测方法和置信度。</p>
+        </div>
+        <a class="button" href="data/example-teas.csv">CSV</a>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>茶样</th><th>类别</th><th>产地</th><th>氧化</th><th>发酵</th><th>焙火</th><th>香气</th><th>甜醇</th></tr>
+          </thead>
+          <tbody id="tea-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="resources">
+      <div class="section-head">
+        <div>
+          <h2>项目资料入口</h2>
+          <p class="lead">GitHub Pages 发布后，这些文档和数据会随网站一同对外访问。</p>
+        </div>
+      </div>
+      <div class="link-grid">
+        <a class="doc-link" href="docs/topology.md"><strong>知识拓扑</strong><span>茶知识节点与关系总图。</span></a>
+        <a class="doc-link" href="docs/tea-system.md"><strong>TEA-CODE</strong><span>茶理化编码体系草案。</span></a>
+        <a class="doc-link" href="docs/research-sources.md"><strong>资料来源</strong><span>证据等级与引用规范。</span></a>
+        <a class="doc-link" href="docs/workbench.md"><strong>研发看板</strong><span>项目现状、问题和任务拆解。</span></a>
+      </div>
     </section>
   </main>
 
   <footer>
-    v0.1.0-alpha · 更新于 2026-06-17 · 图片占位来源：Wikimedia Commons
+    Tea Vector · GitHub Pages 静态前端 · v0.2.0-alpha
   </footer>
+
+  <script>
+    const dimensions = [
+      ["T01", "嫩度"], ["T02", "完整度"], ["P01", "氧化"], ["P02", "发酵"],
+      ["P03", "焙火"], ["P04", "陈化"], ["C01", "多酚"], ["C02", "儿茶素"],
+      ["C03", "聚合物"], ["C04", "氨基酸"], ["C05", "咖啡碱"], ["C06", "香气"],
+      ["C07", "浸出物"], ["C08", "矿物"], ["S01", "苦涩"], ["S02", "甜醇"]
+    ];
+
+    const featuredKeys = ["T01", "P01", "P02", "P03", "C06", "S01", "S02"];
+    const keyLabels = Object.fromEntries(dimensions);
+
+    function parseCsv(text) {
+      const lines = text.trim().split(/\r?\n/);
+      const headers = lines.shift().split(",");
+      return lines.map((line) => {
+        const values = line.split(",");
+        return Object.fromEntries(headers.map((key, index) => [key, values[index]]));
+      });
+    }
+
+    function score(record, key) {
+      return Number(record[key] || 0);
+    }
+
+    function renderBars(record) {
+      const bars = document.getElementById("bars");
+      bars.innerHTML = featuredKeys.map((key) => {
+        const value = score(record, key);
+        return `<div class="bar"><span>${keyLabels[key]}</span><div class="track"><div class="fill" style="width:${value * 10}%"></div></div><span>${value}</span></div>`;
+      }).join("");
+    }
+
+    function renderTable(records) {
+      const body = document.getElementById("tea-table");
+      body.innerHTML = records.map((record) => `
+        <tr>
+          <td>${record.name}</td>
+          <td>${record.category}</td>
+          <td>${record.origin}</td>
+          <td>${record.P01}</td>
+          <td>${record.P02}</td>
+          <td>${record.P03}</td>
+          <td>${record.C06}</td>
+          <td>${record.S02}</td>
+        </tr>
+      `).join("");
+    }
+
+    function drawRadar(record) {
+      const canvas = document.getElementById("radar");
+      const ctx = canvas.getContext("2d");
+      const width = canvas.width;
+      const height = canvas.height;
+      const centerX = width / 2;
+      const centerY = height / 2 + 8;
+      const radius = Math.min(width, height) * .34;
+      ctx.clearRect(0, 0, width, height);
+      ctx.lineWidth = 1;
+      ctx.font = "13px system-ui, sans-serif";
+
+      for (let ring = 1; ring <= 5; ring += 1) {
+        ctx.beginPath();
+        dimensions.forEach((_, index) => {
+          const angle = -Math.PI / 2 + index * Math.PI * 2 / dimensions.length;
+          const pointRadius = radius * ring / 5;
+          const x = centerX + Math.cos(angle) * pointRadius;
+          const y = centerY + Math.sin(angle) * pointRadius;
+          if (index === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        });
+        ctx.closePath();
+        ctx.strokeStyle = "#d7ded0";
+        ctx.stroke();
+      }
+
+      dimensions.forEach(([key, label], index) => {
+        const angle = -Math.PI / 2 + index * Math.PI * 2 / dimensions.length;
+        const x = centerX + Math.cos(angle) * radius;
+        const y = centerY + Math.sin(angle) * radius;
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.lineTo(x, y);
+        ctx.strokeStyle = "#e0e5da";
+        ctx.stroke();
+        ctx.fillStyle = "#59685e";
+        const labelX = centerX + Math.cos(angle) * (radius + 28);
+        const labelY = centerY + Math.sin(angle) * (radius + 22);
+        ctx.textAlign = labelX < centerX - 10 ? "right" : labelX > centerX + 10 ? "left" : "center";
+        ctx.fillText(label, labelX, labelY);
+      });
+
+      ctx.beginPath();
+      dimensions.forEach(([key], index) => {
+        const angle = -Math.PI / 2 + index * Math.PI * 2 / dimensions.length;
+        const pointRadius = radius * score(record, key) / 10;
+        const x = centerX + Math.cos(angle) * pointRadius;
+        const y = centerY + Math.sin(angle) * pointRadius;
+        if (index === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      });
+      ctx.closePath();
+      ctx.fillStyle = "rgba(47, 106, 67, .22)";
+      ctx.strokeStyle = "#2f6a43";
+      ctx.lineWidth = 2;
+      ctx.fill();
+      ctx.stroke();
+    }
+
+    function selectRecord(records, record) {
+      document.getElementById("selected-name").textContent = record.name;
+      document.getElementById("selected-meta").textContent = `${record.origin} · ${record.category} · ${record.basis}`;
+      renderBars(record);
+      drawRadar(record);
+    }
+
+    fetch("data/example-teas.csv")
+      .then((response) => response.text())
+      .then((text) => {
+        const records = parseCsv(text);
+        const select = document.getElementById("tea-select");
+        select.innerHTML = records.map((record, index) => `<option value="${index}">${record.name}</option>`).join("");
+        const defaultIndex = Math.max(0, records.findIndex((record) => record.id === "yancha-rougui-demo"));
+        select.value = String(defaultIndex);
+        renderTable(records);
+        selectRecord(records, records[defaultIndex]);
+        select.addEventListener("change", () => selectRecord(records, records[Number(select.value)]));
+      })
+      .catch(() => {
+        document.getElementById("bars").textContent = "样例数据加载失败，请检查 data/example-teas.csv。";
+      });
+  </script>
 </body>
 </html>
-
