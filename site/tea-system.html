@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="TEA-CODE 茶向量体系可视化页面">
+  <title>TEA-CODE 茶向量体系 | Tea Vector</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <nav class="site-nav"><div class="nav-inner"><a class="brand" href="index.html"><span class="mark">茶</span><span>Tea Vector</span></a><div class="nav-links"><a href="index.html">首页</a><a href="topology.html">知识拓扑</a><a href="tea-system.html">TEA-CODE</a><a href="research-sources.html">资料来源</a><a href="workbench.html">研发看板</a></div></div></nav>
+  <header class="page-hero"><div class="hero-inner"><p class="eyebrow">TEA-CODE</p><h1>用 16 维向量解释一杯茶</h1><p class="subtitle">TEA-CODE 不取代六大茶类，而是把原料状态、工艺状态、化学状态和感官状态拆成可讨论、可测量、可迭代的变量。</p></div></header>
+
+  <main>
+    <section class="section">
+      <div class="section-head"><div><h2>设计原则</h2><p class="lead">体系必须能解释问题，也必须诚实标注数据基础和置信度。</p></div><a class="button" href="docs/tea-system.md">源文档</a></div>
+      <div class="grid grid-5 grid-3">
+        <article class="card"><h3>可解释</h3><p>每一维都对应工艺、理化或感官机制。</p></article>
+        <article class="card"><h3>可测优先</h3><p>能检测的数据优先，不能检测时才使用专家估计。</p></article>
+        <article class="card"><h3>版本化</h3><p>维度、权重和参考区间都允许持续更新。</p></article>
+        <article class="card"><h3>分层</h3><p>区分原料、工艺、化学和感官状态。</p></article>
+        <article class="card"><h3>诚实</h3><p>每条向量带 confidence 和 basis。</p></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><h2>16 维向量地图</h2><p class="lead">所有维度先映射到 0-10，未来应保留原始单位和参考区间。</p></div></div>
+      <div class="grid grid-4">
+        <div class="panel"><span class="badge">T 原料形态</span><h3>T01 嫩度 / T02 完整度</h3><p>用采摘标准、芽叶比例、叶底和筛分描述原料外观与等级基础。</p></div>
+        <div class="panel"><span class="badge">P 工艺状态</span><h3>P01-P04</h3><p>氧化、微生物发酵、焙火和陈化共同决定茶类分化和仓储状态。</p></div>
+        <div class="panel"><span class="badge">C 化学状态</span><h3>C01-C08</h3><p>多酚、儿茶素、聚合物、氨基酸、咖啡碱、香气、浸出物和矿物灰分。</p></div>
+        <div class="panel"><span class="badge">S 感官状态</span><h3>S01-S02</h3><p>苦涩强度与鲜爽甜醇是连接理化指标和饮用体验的结果层。</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><h2>茶样交互比较</h2><p class="lead">选择任一代表性茶样，查看关键维度条形指标和完整雷达图。当前数据为体系演示，不代表具体商品检测结果。</p></div><a class="button" href="data/example-teas.csv">下载 CSV</a></div>
+      <div class="grid grid-2">
+        <div class="panel">
+          <h3 id="selected-name">茶样加载中</h3>
+          <p id="selected-meta">读取 data/example-teas.csv</p>
+          <div class="bars" id="bars"></div>
+        </div>
+        <div class="panel">
+          <div class="select-row"><label for="tea-select">切换茶样</label><select id="tea-select" aria-label="选择茶样"></select></div>
+          <canvas id="radar" width="720" height="360" aria-label="TEA-CODE 雷达图"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><h2>样例数据表</h2><p class="lead">表格只展示部分维度，完整 16 维可下载 CSV 查看。</p></div></div>
+      <div class="table-wrap"><table><thead><tr><th>茶样</th><th>类别</th><th>产地</th><th>氧化</th><th>发酵</th><th>焙火</th><th>香气</th><th>甜醇</th></tr></thead><tbody id="tea-table"></tbody></table></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><h2>计算与推断</h2><p class="lead">实测值优先；没有实验数据时可以推断，但必须降低置信度。</p></div></div>
+      <div class="grid grid-2">
+        <div class="code-block"><pre>score = clamp(10 * (value - lower_ref) / (upper_ref - lower_ref), 0, 10)</pre></div>
+        <div class="panel"><h3>推断规则示例</h3><p>绿茶通常 P01 低、C02 高；红茶 P01 高、C03 高；乌龙横跨氧化度和焙火度；黑茶/熟普 P02 与 P04 可能较高。</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><h2>应用场景与版本路线</h2><p class="lead">TEA-CODE 的价值在于把比较、解释和研究假设放到同一套可迭代语言中。</p></div></div>
+      <div class="grid grid-4">
+        <div class="card"><h3>同类比较</h3><p>比较同茶类不同产区、工艺和仓储差异。</p></div>
+        <div class="card"><h3>冲泡解释</h3><p>用苦涩、鲜爽、浸出物和香气解释水温与时间。</p></div>
+        <div class="card"><h3>健康边界</h3><p>把咖啡碱、提取物和安全指标与人群差异连接。</p></div>
+        <div class="card"><h3>反推工艺</h3><p>从氧化、聚合物、焙火和陈化推断加工路径。</p></div>
+      </div>
+      <div class="grid grid-3" style="margin-top:14px">
+        <div class="timeline-item"><h3>v0.1</h3><p>16 维框架、样例数据、人工估计。</p></div>
+        <div class="timeline-item"><h3>v0.2</h3><p>加入原始单位、参考区间、数据来源和置信度。</p></div>
+        <div class="timeline-item"><h3>v0.3+</h3><p>茶类聚类、相似茶检索、感官审评和冲泡曲线。</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="footer-inner"><span>Tea Vector · TEA-CODE</span><a href="docs/tea-system.md">查看 Markdown 源文档</a></div></footer>
+  <script src="assets/tea-vector.js"></script>
+  <script>TeaVector.loadInteractiveTea({ nameId: "selected-name", metaId: "selected-meta", barsId: "bars", radarId: "radar", tableId: "tea-table", selectId: "tea-select" });</script>
+</body>
+</html>

@@ -9,11 +9,12 @@
 ## 快速入口
 
 - 可视化首页：[site/index.html](site/index.html)
+- 茶知识拓扑页：[site/topology.html](site/topology.html)
+- TEA-CODE 茶向量页：[site/tea-system.html](site/tea-system.html)
+- 资料来源与证据页：[site/research-sources.html](site/research-sources.html)
+- 研发看板页：[site/workbench.html](site/workbench.html)
 - GitHub Pages 工作流：[.github/workflows/pages.yml](.github/workflows/pages.yml)
-- 知识拓扑：[docs/topology.md](docs/topology.md)
-- 新茶体系 TEA-CODE：[docs/tea-system.md](docs/tea-system.md)
-- 研发工作界面：[docs/workbench.md](docs/workbench.md)
-- 资料来源与证据分级：[docs/research-sources.md](docs/research-sources.md)
+- Markdown 源文档：[docs/](docs/)
 - 茶向量 schema：[data/tea-vector-schema.json](data/tea-vector-schema.json)
 - 样例茶向量数据：[data/example-teas.csv](data/example-teas.csv)
 
