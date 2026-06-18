@@ -2,9 +2,9 @@
 
 一个面向 GitHub Pages 与开放协作的「茶」知识项目：用图文、数据、引用和持续研发看板，把茶叶、茶树、茶艺、茶道、茶疗、理化指标、适应性、历史、产业和前沿科学连接成一张可迭代的知识拓扑网络。
 
-> 当前版本：`v0.1.0-alpha`
+> 当前版本：`v0.2.0-alpha`
 >
-> 状态：项目骨架、一级知识拓扑、TEA-CODE 茶向量体系草案、样例数据与研发看板已建立。
+> 状态：项目骨架、一级知识拓扑、TEA-CODE 茶向量体系草案、17 条样例数据、研发看板与 GitHub Pages 自动化已建立。
 
 ## 快速入口
 
@@ -25,7 +25,7 @@
 2. 将 `site/`、`docs/`、`data/` 和 `README.md` 打包到 `_site/`。
 3. 使用 GitHub Pages artifact 部署网站。
 
-仓库设置中需要将 Pages source 选择为 `GitHub Actions`。发布成功后，网站通常可通过 `https://hecosysu.github.io/tea_vector/` 访问。
+工作流会通过 `actions/configure-pages@v5` 的 `enablement: true` 参数尝试自动启用 Pages，并将发布源配置为 GitHub Actions。若仓库或组织策略禁止工作流自动启用 Pages，仍需在仓库设置中手动将 Pages source 选择为 `GitHub Actions`。发布成功后，网站通常可通过 `https://hecosysu.github.io/tea_vector/` 访问。
 
 ## 项目目标
 
@@ -120,11 +120,11 @@ NCCIH 2025 年资料指出，绿茶作为饮品对成年人通常未报告安全
 - [x] 建立研发工作界面
 - [ ] 为每个一级主题补 5-10 个权威来源
 - [ ] 为 30 种代表性茶建立样例向量
+- [x] 将样例茶向量扩展到 17 种代表性茶
 - [ ] 建立图片与版权素材清单
-- [ ] 加入自动校验脚本和 GitHub Actions
 - [x] 加入自动校验脚本和 GitHub Actions
-- [ ] 在 GitHub 仓库设置中启用 Pages: GitHub Actions
-- [ ] 发布 GitHub Pages
+- [x] 修复 `configure-pages` 首次部署时 Pages 未启用导致的 Not Found 报错
+- [ ] 发布 GitHub Pages 并记录线上访问地址
 
 ## 主要参考入口
 
