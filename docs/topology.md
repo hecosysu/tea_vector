@@ -56,9 +56,9 @@ flowchart TB
 
 - 工艺茶类：绿、白、黄、乌龙、红、黑。
 - 形态：散茶、紧压茶、粉茶、碎茶、袋泡茶。
-- 产地：西湖龙井、武夷岩茶、安溪铁观音、祁门红茶、普洱茶、福鼎白茶等。
+- 产地与名茶：中国节点包括西湖龙井、碧螺春、黄山毛峰、君山银针、祁门红茶、六安瓜片、信阳毛尖、都匀毛尖、武夷岩茶、大红袍、铁观音、普洱茶等；国际节点包括 Assam、Ceylon、Darjeeling、Nilgiri、Rize、Sencha、Gyokuro、Matcha 等。
 - 商品等级：采摘嫩度、筛分等级、外形、香气、滋味、汤色、叶底。
-- 再加工：茉莉花茶、抹茶、玄米茶、调饮茶、冷萃茶。
+- 再加工与边界饮品：茉莉花茶、抹茶、玄米茶、伯爵茶、Masala chai、俄罗斯商队茶、康普茶、花草茶和 Rooibos；其中非 `Camellia sinensis` 来源者应归入代用茶/边界饮品。
 
 ## 3. 制茶科学
 
@@ -137,13 +137,41 @@ flowchart LR
 - 气候变化对茶树适应性、品质和产区迁移的影响。
 - 茶多酚、茶氨酸、咖啡碱在人体中的吸收、代谢与人群差异。
 
-## 9. 未覆盖清单
+## 9. Wikipedia 条目扩展索引
+
+为避免知识拓扑只停留在少量代表性中国名茶，本项目新增 `data/wikipedia-tea-topology.json`，把 Wikipedia 中茶相关条目整理为可扩展索引。Wikipedia 在本项目中主要用于发现条目、建立互链和补充国际视角；涉及分类学、安全、标准、健康和理化结论时，仍需 Kew、ISO、NIH/NCCIH、FAO、论文或标准文件二次核对。
+
+当前索引覆盖以下节点类型：
+
+| 类型 | 拓扑域 | 代表条目 |
+| --- | --- | --- |
+| 植物与近缘植物 | 茶树百科 | Tea, Camellia sinensis, Camellia taliensis, Camellia japonica, Camellia sasanqua |
+| 工艺茶类 | 茶叶百科 | White tea, Yellow tea, Green tea, Oolong, Black tea, Fermented tea, Pu-erh tea |
+| 中国名茶 | 茶叶百科 | Longjing, Biluochun, Huangshan Maofeng, Junshan Yinzhen, Keemun, Lu'an Melon Seed, Tieguanyin, Da Hong Pao |
+| 国际茶与产区茶 | 茶叶百科 | Assam tea, Ceylon tea, Darjeeling tea, Nilgiri tea, Rize tea, Sencha, Gyokuro, Matcha |
+| 再加工与调味茶 | 茶叶百科/茶艺茶道 | Jasmine tea, Earl Grey tea, Masala chai, Russian Caravan, Maghrebi mint tea, Genmaicha |
+| 产茶工艺 | 制茶科学 | Tea processing, fixation, rolling, oxidation, drying, blending and additives |
+| 茶具与文化 | 茶艺茶道/历史文化 | Teaware, Teapot, Gaiwan, Chawan, Tea ceremony, Chinese tea culture, Japanese tea ceremony, The Classic of Tea |
+| 理化与健康入口 | 理化指标/茶疗与健康 | Caffeine, Catechin, Theanine, Tea polyphenol, Green tea extract |
+| 边界饮品 | 茶叶百科 | Kombucha, Herbal tea, Rooibos |
+
+关键边界：
+
+- `Black tea` 在英语语境中对应中文「红茶」，不等同于中文「黑茶」。
+- `Fermented tea`、`Pu-erh tea`、Tibetan tea 等更接近中文后发酵/黑茶语境。
+- `Anji bai cha` 名称含 white tea，但通常按绿茶工艺理解，是分类命名与工艺分类不一致的案例。
+- `Kombucha`、`Herbal tea`、`Rooibos` 等常被市场称为 tea，但不是严格意义上的茶树来源茶，应作为边界节点。
+- `Green tea extract` 等健康相关条目只能作为线索入口，不能单独支撑医疗或保健结论。
+
+## 10. 未覆盖清单
 
 下一轮需要继续补齐：
 
 - 各国茶叶标准与食品安全法规。
 - 中国国家标准、地理标志和地方标准清单。
 - 代表性产区的生态数据。
+- Wikipedia 条目中文名规范化和同义词表。
+- 用 Kew、ISO、NIH/NCCIH、FAO、论文和国家标准为 Wikipedia 条目补证。
 - 茶器材料学：瓷、陶、紫砂、玻璃、金属。
 - 宗教与哲学文本中的茶。
 - 新式茶饮、供应链、碳足迹与公平贸易。

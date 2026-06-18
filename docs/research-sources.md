@@ -9,7 +9,7 @@
 | A | 政府、标准组织、权威数据库、系统综述 | 分类、标准、安全、医学证据 |
 | B | 同行评议论文、大学/研究所、专业协会 | 机理、工艺、前沿科学 |
 | C | 经典茶学著作、博物馆、地方志、行业报告 | 历史、文化、产区、产业 |
-| D | 茶企、媒体、自媒体、论坛 | 线索与案例，不能单独支撑结论 |
+| D | 茶企、媒体、自媒体、论坛、开放百科 | 线索、案例、条目发现与互链，不能单独支撑结论 |
 
 ## 已确认的核心来源
 
@@ -21,6 +21,7 @@
 | 农业与产业统计 | FAOSTAT | 全球茶叶生产、面积、贸易等统计入口 | https://www.fao.org/faostat/ |
 | 癌症预防证据 | Cochrane Review | 绿茶与癌症预防的系统综述入口，NCCIH 关键参考中列出 | https://www.cochranelibrary.com/ |
 | 药物性肝损伤 | NIH LiverTox | 绿茶提取物相关肝损伤资料入口，NCCIH 关键参考中列出 | https://www.ncbi.nlm.nih.gov/books/ |
+| 开放百科索引 | Wikipedia: Tea / Category:Tea / List of Chinese teas | 条目发现、跨语境名称、茶类和名茶互链；不能单独支撑健康、安全、标准或分类学结论 | https://en.wikipedia.org/wiki/Tea |
 
 ## 当前调研摘要
 
