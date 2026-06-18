@@ -12,7 +12,7 @@
 | TEA-CODE 茶体系 | 草案完成 | 16 维向量，需用样品和文献校准 |
 | 资料来源 | 初版完成 | 已建立来源分级和核心权威来源入口 |
 | 样例数据 | 持续扩展 | 17 种代表性茶样，均为演示估计，覆盖六大茶类与再加工茶 |
-| 自动化 | 已修复增强 | GitHub Pages Actions、数据校验和静态站点构建已加入；`configure-pages` 已配置自动启用 Pages |
+| 自动化 | 已修复增强 | GitHub Pages Actions、数据校验和静态站点构建已加入；Pages source 需要在仓库 Settings 中选择 `GitHub Actions` |
 
 ## 当前问题
 
@@ -21,7 +21,7 @@
 3. 图片素材还没有建立版权清单，当前首页使用远程公开图像链接作为占位。
 4. 健康与茶疗内容需要严格证据分级，避免过度宣称。
 5. 前沿科学部分需要补充近五年论文与研究机构。
-6. GitHub Pages workflow 已加入 `enablement: true` 以解决首次部署时 Pages 未启用导致的 Not Found 报错；若仓库或组织策略禁止自动启用，仍需手动选择 `GitHub Actions` 作为发布源。
+6. GitHub Pages build 曾在 `configure-pages@v5` 阶段报 `Resource not accessible by integration` 与 `Get Pages site failed: Not Found`。根因是 workflow 的 `GITHUB_TOKEN` 无权创建 Pages site，且仓库 Pages 尚未配置为 GitHub Actions 发布源；当前方案是移除 workflow 自动创建 Pages site 的行为，并在仓库 Settings -> Pages 中手动选择 `GitHub Actions`。日志中的 Node.js 20 deprecation 是 action runtime 警告，不是当前失败根因。
 
 ## 任务拆解
 

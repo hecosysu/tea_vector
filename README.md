@@ -25,7 +25,7 @@
 2. 将 `site/`、`docs/`、`data/` 和 `README.md` 打包到 `_site/`。
 3. 使用 GitHub Pages artifact 部署网站。
 
-工作流会通过 `actions/configure-pages@v5` 的 `enablement: true` 参数尝试自动启用 Pages，并将发布源配置为 GitHub Actions。若仓库或组织策略禁止工作流自动启用 Pages，仍需在仓库设置中手动将 Pages source 选择为 `GitHub Actions`。发布成功后，网站通常可通过 `https://hecosysu.github.io/tea_vector/` 访问。
+仓库需要在 Settings -> Pages 中将 Build and deployment 的 Source 选择为 `GitHub Actions`。本项目的工作流只负责校验数据、构建 `_site`、上传 Pages artifact 并部署；不再尝试在 workflow 内自动创建 Pages site，因为 GitHub 可能返回 `Resource not accessible by integration`。发布成功后，网站通常可通过 `https://hecosysu.github.io/tea_vector/` 访问。
 
 ## 项目目标
 
